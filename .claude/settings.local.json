@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash *)",
+      "WebFetch(domain:www.shadcn-vue.com)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git init *)"
+    ]
+  }
+}
