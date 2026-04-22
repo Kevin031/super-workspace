@@ -94,6 +94,20 @@ function select() {
   line-height: 1.5;
   cursor: pointer;
   margin-bottom: 1px;
+  position: relative;
+}
+
+.tree-node-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: var(--accent-primary);
+  border-radius: 0 2px 2px 0;
+  transition: height var(--transition-fast);
 }
 
 .tree-node-content:hover {
@@ -102,6 +116,11 @@ function select() {
 
 .tree-node-selected {
   background: var(--accent-muted);
+  transform: translateX(2px);
+}
+
+.tree-node-selected::before {
+  height: 60%;
 }
 
 .tree-node-selected .tree-node-label {
