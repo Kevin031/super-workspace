@@ -105,11 +105,13 @@ function handleSelect(key: string) {
   display: flex;
   flex-direction: column;
   background: var(--bg-secondary);
-  border-right: 1px solid var(--border-subtle);
+  border-right: none;
+  border-radius: 0 20px 20px 0;
   position: relative;
+  box-shadow: 2px 0 16px rgba(28, 25, 23, 0.08);
 }
 
-/* 右侧边框渐变 */
+/* 右侧渐变分割线 */
 .sidebar::after {
   content: '';
   position: absolute;
@@ -120,15 +122,15 @@ function handleSelect(key: string) {
   background: linear-gradient(
     to bottom,
     transparent,
-    var(--border-default) 15%,
-    var(--border-default) 85%,
+    rgba(120, 80, 60, 0.08) 15%,
+    rgba(120, 80, 60, 0.08) 85%,
     transparent
   );
 }
 
 /* ===== Header ===== */
 .sidebar-header {
-  padding: 20px 20px 16px;
+  padding: 24px 20px 18px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
