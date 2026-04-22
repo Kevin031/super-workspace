@@ -62,8 +62,9 @@ async function scanProjects() {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 80% 0%, var(--accent-glow), transparent),
-    radial-gradient(ellipse 40% 30% at 20% 100%, var(--accent-muted), transparent);
+    radial-gradient(ellipse 50% 35% at 85% 10%, rgba(180, 83, 9, 0.08), transparent),
+    radial-gradient(ellipse 40% 25% at 15% 90%, rgba(253, 230, 138, 0.05), transparent),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(68, 64, 60, 0.04), transparent);
   pointer-events: none;
   z-index: 0;
 }
