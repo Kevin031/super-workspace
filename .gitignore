@@ -23,3 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 .worktrees/
+
+# Playwright test artifacts
+.playwright-cli/
+.playwright-mcp/
+theme-verify-*.png
+
+# Superpowers temp files
+.superpowers/
