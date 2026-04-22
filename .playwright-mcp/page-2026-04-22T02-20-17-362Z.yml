@@ -1,0 +1,63 @@
+- generic:
+  - generic:
+    - generic:
+      - complementary:
+        - generic:
+          - generic:
+            - generic:
+              - img
+            - generic:
+              - heading [level=1]: Super Workspace
+              - paragraph: 工作空间管理
+          - button [expanded]:
+            - img
+        - generic:
+          - generic:
+            - generic: "0"
+            - generic: 项目
+          - generic:
+            - generic: "0"
+            - generic: 分组
+        - generic:
+          - generic:
+            - img
+            - paragraph: 暂无项目
+        - generic: 选择项目查看详情
+      - main:
+        - generic:
+          - generic:
+            - img
+          - heading [level=2]: 选择一个项目
+          - paragraph: 从左侧边栏选择一个项目，查看其详细信息和 README
+  - dialog "设置" [ref=e70]:
+    - generic [ref=e71]:
+      - heading "设置" [level=2] [ref=e72]:
+        - img [ref=e73]
+        - text: 设置
+      - paragraph [ref=e76]: 自定义应用的外观和扫描路径
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - generic [ref=e79]: 外观
+        - generic [ref=e80]:
+          - button "浅色" [active] [ref=e81]:
+            - img
+            - text: 浅色
+          - button "深色" [ref=e82]:
+            - img
+            - text: 深色
+          - button "自动" [ref=e83]:
+            - img
+            - text: 自动
+      - generic [ref=e84]:
+        - generic [ref=e85]: 项目扫描路径
+        - generic [ref=e86]:
+          - textbox "项目扫描路径" [ref=e87]:
+            - /placeholder: 请输入项目目录路径
+          - button [ref=e88]:
+            - img
+    - generic [ref=e89]:
+      - button "取消" [ref=e90]
+      - button "保存" [ref=e91]
+    - button "Close" [ref=e92]:
+      - img
+      - generic [ref=e93]: Close

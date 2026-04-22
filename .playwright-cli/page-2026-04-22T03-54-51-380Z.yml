@@ -1,0 +1,26 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img [ref=e8]
+        - generic [ref=e11]:
+          - heading "Super Workspace" [level=1] [ref=e12]
+          - generic [ref=e13]: 工作空间管理
+      - button "设置" [ref=e15] [cursor=pointer]:
+        - img [ref=e16]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]: "0"
+        - generic [ref=e22]: 项目
+      - generic [ref=e24]:
+        - generic [ref=e25]: "0"
+        - generic [ref=e26]: 分组
+    - generic [ref=e29]: 暂无项目
+    - generic [ref=e31]:
+      - img [ref=e32]
+      - generic [ref=e34]: 选择项目查看详情
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - img [ref=e39]
+      - heading "选择一个项目" [level=2] [ref=e41]
+      - paragraph [ref=e42]: 从左侧边栏选择一个项目，查看其详细信息和 README

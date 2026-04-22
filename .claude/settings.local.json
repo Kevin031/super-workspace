@@ -5,7 +5,8 @@
       "WebFetch(domain:www.shadcn-vue.com)",
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(git init *)"
+      "Bash(git init *)",
+      "Bash(npx shadcn-vue@latest *)"
     ]
   }
 }
