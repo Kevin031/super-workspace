@@ -154,7 +154,8 @@ const gitStatusMeta = computed(() => {
             <div class="git-cell">
               <span class="git-cell-label">状态</span>
               <span class="git-cell-value">
-                <span class="status-pill" :class="'status-' + gitStatusMeta.type">
+                <span class="status-dot" :class="'status-' + gitStatusMeta.type">
+                  <span class="status-dot-marker"></span>
                   {{ gitStatusMeta.text }}
                 </span>
               </span>
@@ -226,12 +227,12 @@ const gitStatusMeta = computed(() => {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  animation: pulse-ring 3s ease-in-out infinite;
+  animation: slow-rotate 8s linear infinite;
 }
 
-@keyframes pulse-ring {
-  0%, 100% { opacity: 0.5; border-color: var(--border-strong); }
-  50% { opacity: 1; border-color: var(--border-default); }
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .empty-title {
@@ -308,7 +309,7 @@ const gitStatusMeta = computed(() => {
   font-weight: 700;
   color: var(--text-primary);
   margin: 0;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
   line-height: 1.2;
   word-break: break-word;
 }
@@ -340,32 +341,43 @@ const gitStatusMeta = computed(() => {
   transition: all var(--transition-fast);
   border: 1px solid transparent;
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-secondary {
-  background: var(--bg-tertiary);
+  background: transparent;
   color: var(--text-secondary);
   border-color: var(--border-default);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-hover);
+  background: #F5F0EB;
   color: var(--text-primary);
   border-color: var(--border-strong);
   transform: translateY(-1px);
 }
 
+[data-theme="dark"] .btn-secondary:hover {
+  background: #44403C;
+}
+
 .btn-primary {
-  background: var(--accent-muted);
-  color: var(--accent-primary);
-  border-color: var(--accent-glow);
+  background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, transparent 40%), var(--accent-primary);
+  color: #fff;
+  border-color: #92400E;
+  box-shadow: 0 2px 0 #92400E, 0 4px 8px rgba(180, 83, 9, 0.2);
 }
 
 .btn-primary:hover {
-  background: var(--accent-glow);
-  border-color: var(--accent-primary);
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 40%), var(--accent-secondary);
   transform: translateY(-1px);
-  box-shadow: var(--glow-accent);
+  box-shadow: 0 3px 0 #92400E, 0 6px 12px rgba(180, 83, 9, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 #92400E, 0 2px 4px rgba(180, 83, 9, 0.2);
 }
 
 /* ===== Sections ===== */
@@ -409,13 +421,23 @@ const gitStatusMeta = computed(() => {
   gap: 5px;
   padding: 14px 16px;
   background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  border: none;
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(60, 40, 30, 0.04);
+  transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .info-cell {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .info-cell:hover {
-  border-color: var(--border-default);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(60, 40, 30, 0.08);
+}
+
+[data-theme="dark"] .info-cell:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .info-cell-label {
@@ -453,13 +475,23 @@ const gitStatusMeta = computed(() => {
   gap: 5px;
   padding: 14px 16px;
   background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
+  border: none;
   border-radius: var(--radius-md);
-  transition: border-color var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(60, 40, 30, 0.04);
+  transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .git-cell {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .git-cell:hover {
-  border-color: var(--border-default);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(60, 40, 30, 0.08);
+}
+
+[data-theme="dark"] .git-cell:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .git-cell-label {
@@ -497,51 +529,37 @@ const gitStatusMeta = computed(() => {
   color: var(--accent-primary);
 }
 
-/* Status pills */
-.status-pill {
+/* Status dots */
+.status-dot {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
 }
 
-.status-clean {
-  background: rgba(34, 197, 94, 0.12);
-  color: #22c55e;
+.status-dot-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-[data-theme="light"] .status-clean {
-  background: rgba(34, 197, 94, 0.10);
-  color: #16a34a;
+.status-clean .status-dot-marker {
+  background: #65A30D;
 }
 
-.status-modified {
-  background: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
+.status-modified .status-dot-marker {
+  background: #B45309;
 }
 
-[data-theme="light"] .status-modified {
-  background: rgba(245, 158, 11, 0.10);
-  color: #d97706;
+.status-untracked .status-dot-marker {
+  background: #DC2626;
 }
 
-.status-untracked {
-  background: rgba(239, 68, 68, 0.12);
-  color: #ef4444;
-}
-
-[data-theme="light"] .status-untracked {
-  background: rgba(239, 68, 68, 0.10);
-  color: #dc2626;
-}
-
-.status-default {
-  background: var(--bg-tertiary);
-  color: var(--text-tertiary);
+.status-default .status-dot-marker {
+  background: var(--text-muted);
 }
 
 /* ===== README ===== */
@@ -571,9 +589,14 @@ const gitStatusMeta = computed(() => {
 
 .readme-rendered {
   padding: 20px 24px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
+  background: #FAFAF9;
+  border: none;
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+[data-theme="dark"] .readme-rendered {
+  background: #1C1917;
 }
 
 .readme-empty {
@@ -644,12 +667,17 @@ const gitStatusMeta = computed(() => {
 }
 
 .readme-rendered :deep(pre) {
-  background: var(--bg-elevated);
+  background: #F0EBE5;
   padding: 16px;
   border-radius: var(--radius-md);
   overflow-x: auto;
   margin-bottom: 16px;
-  border: 1px solid var(--border-subtle);
+  border: 1px dashed rgba(120, 80, 60, 0.15);
+}
+
+[data-theme="dark"] .readme-rendered :deep(pre) {
+  background: #24201C;
+  border-color: rgba(120, 80, 60, 0.20);
 }
 
 .readme-rendered :deep(pre code) {
