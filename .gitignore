@@ -28,6 +28,7 @@ dist-ssr
 .playwright-cli/
 .playwright-mcp/
 theme-verify-*.png
+settings-modal-*.png
 
 # Superpowers temp files
 .superpowers/

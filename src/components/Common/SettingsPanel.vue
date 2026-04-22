@@ -52,9 +52,10 @@ async function browsePath() {
     </button>
 
     <!-- Modal -->
-    <div v-if="showSettings" class="modal">
-      <div class="modal-backdrop" @click="cancelSettings"></div>
-      <div class="modal-card">
+    <Teleport to="body">
+      <div v-if="showSettings" class="modal">
+        <div class="modal-backdrop" @click="cancelSettings"></div>
+        <div class="modal-card">
         <!-- Header -->
         <div class="modal-header">
           <div class="modal-title-group">
@@ -162,7 +163,8 @@ async function browsePath() {
         </div>
       </div>
     </div>
-  </div>
+  </Teleport>
+</div>
 </template>
 
 <style scoped>
